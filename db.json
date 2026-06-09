@@ -1,3 +1,7 @@
 {
-  "ocorrencias": []
+  "ocorrencias": [
+    { "id": "1", "cultura": "Milho", "setor": "Norte", "criticidade": "Alta" },
+    { "id": "2", "cultura": "Soja", "setor": "Sul", "criticidade": "Média" },
+    { "id": "3", "cultura": "Trigo", "setor": "Leste", "criticidade": "Baixa" }
+  ]
 }

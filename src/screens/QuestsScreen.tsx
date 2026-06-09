@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Alert } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import api from '../api/api';
 import { RootStackParamList, Ocorrencia } from '../types';
@@ -14,8 +14,9 @@ export default function QuestsScreen({ navigation }: Props) {
     try {
       const response = await api.get('/ocorrencias');
       setOcorrencias(response.data);
-    } catch (error) {
-      alert('Falha na sincronização dos dados.');
+    } catch (error: any) {
+      console.error("Erro na busca de ocorrências:", error.message);
+      Alert.alert("Erro", "Falha na sincronização dos dados.");
     } finally {
       setLoading(false);
     }
@@ -38,11 +39,14 @@ export default function QuestsScreen({ navigation }: Props) {
 
   return (
     <View style={styles.container}>
-      {loading ? <ActivityIndicator size="large" color="#E9C46A" /> : (
+      {loading ? (
+        <ActivityIndicator size="large" color="#E9C46A" />
+      ) : (
         <FlatList 
           data={ocorrencias} 
           keyExtractor={(item) => item.id.toString()} 
-          renderItem={renderItem} // <--- Aqui é onde o FlatList chama a tua função
+          renderItem={renderItem}
+          ListEmptyComponent={<Text style={styles.emptyText}>Nenhuma ocorrência registrada no satélite.</Text>}
         />
       )}
       <TouchableOpacity style={styles.fab} onPress={() => navigation.navigate('AddQuest')}>
@@ -57,6 +61,7 @@ const styles = StyleSheet.create({
   card: { backgroundColor: '#1C2541', padding: 20, borderRadius: 10, marginBottom: 15, borderLeftWidth: 5, borderLeftColor: '#F4A261' },
   cardTitle: { color: '#E9C46A', fontSize: 20, fontWeight: 'bold' },
   cardText: { color: '#FFF', marginTop: 5 },
+  emptyText: { color: '#FFF', textAlign: 'center', marginTop: 50, fontSize: 16 },
   fab: { position: 'absolute', bottom: 30, right: 30, backgroundColor: '#F4A261', width: 60, height: 60, borderRadius: 30, justifyContent: 'center', alignItems: 'center' },
   fabText: { fontSize: 35, color: '#0B132B' }
 });
