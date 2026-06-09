@@ -1,161 +1,381 @@
 # 🛰️ Jornada da Terra - Nexus Orbital (Global Solution)
 
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Expo](https://img.shields.io/badge/Expo-1B1F23?style=for-the-badge&logo=expo&logoColor=white)
-![React Navigation](https://img.shields.io/badge/React_Navigation-6B52AE?style=for-the-badge&logo=react&logoColor=white)
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge\&logo=typescript\&logoColor=white)
+![Expo](https://img.shields.io/badge/Expo-1B1F23?style=for-the-badge\&logo=expo\&logoColor=white)
+![React Navigation](https://img.shields.io/badge/React_Navigation-6B52AE?style=for-the-badge\&logo=react\&logoColor=white)
 ![AsyncStorage](https://img.shields.io/badge/AsyncStorage-Offline_First-45A29E?style=for-the-badge)
 
-Um sistema tático de monitoramento agrícola gamificado, projetado para traduzir dados orbitais complexos em missões de campo ágeis. Desenvolvido para o desafio de Economia e Tecnologia Espacial da Global Solution.
+Um sistema tático de monitoramento agrícola gamificado, projetado para transformar dados orbitais complexos em ações rápidas, intuitivas e acessíveis para produtores rurais. Desenvolvido para o desafio **Global Solution 2026/1**, com foco em **Economia Espacial e Tecnologia Espacial Aplicada a Problemas Reais**.
 
 ---
 
-## 👥 Equipe de Comando (Desenvolvedores)
+# 👥 Equipe de Comando (Desenvolvedores)
 
-- **Bruno Andrade Zanateli** – RM: 563736
-- **Christian S Freitas** – RM: 566098
-- **Pedro Pereira Biasolli** – RM: 562521
-- **Rodrigo Tiezzi** – RM: 562975
-- **Matheus Enrico Souza** – RM: 562532
-
----
-
-## 🎥 Pitch e Demonstração Técnica
-
-> **Assista à nossa solução em funcionamento:** [INSIRA AQUI O LINK DO YOUTUBE]
+| Integrante             | RM     |
+| ---------------------- | ------ |
+| Bruno Andrade Zanateli | 563736 |
+| Christian S. Freitas   | 566098 |
+| Pedro Pereira Biasolli | 562521 |
+| Rodrigo Tiezzi         | 562975 |
+| Matheus Enrico Souza   | 562532 |
 
 ---
 
-## 🌍 O Desafio: Economia e Tecnologia Espacial
+# 🎥 Pitch e Demonstração Técnica
 
-O **Jornada da Terra** nasce da necessidade de aplicar a tecnologia espacial a problemas terrestres reais. Focando na mitigação de anomalias climáticas e controle de pragas, o aplicativo simula um uplink direto com satélites (como o CBERS-4A). O produtor rural atua como um **"Comandante de Campo"**, recebendo alertas em tempo real sobre a **Fazenda Boa Vista** e gerenciando crises através de uma interface tática (HUD).
+> Assista ao projeto em funcionamento:
 
----
-
-## 📱 Mapeamento de Telas e Navegação (React Navigation)
-
-O sistema foi arquitetado com **7 telas exclusivas**, superando amplamente o requisito mínimo (5 telas), com navegação fluida baseada em Pilha (Native Stack):
-
-### 1. Home (`HomeScreen`)
-Dashboard central animado, exibindo o status da telemetria orbital e logs do sistema em tempo real.
-
-### 2. Monitoramento (`QuestsScreen`)
-O "Radar de Missões". Lista todas as anomalias detectadas (Read do CRUD) com indicadores visuais dinâmicos de criticidade.
-
-### 3. Reportar Anomalia (`AddQuestScreen`)
-Formulário de inserção (Create) para novos dados táticos, com validação estrita de campos.
-
-### 4. Detalhes do Alerta (`QuestDetailScreen`)
-Visualização aprofundada da ocorrência, permitindo ação imediata ou purgação do registro (Delete).
-
-### 5. Ajustar Tática (`EditQuestScreen`)
-Tela de recalibragem de dados (Update) para atualizar setores e níveis de ameaça em tempo real.
-
-### 6. Telemetria (`StatsScreen`)
-Análise gráfica de umidade e widgets de saúde do solo utilizando `react-native-chart-kit`.
-
-### 7. Radar Orbital (`MapScreen`)
-Mapeamento geolocalizado utilizando `react-native-maps`, fixando o epicentro da propriedade monitorada.
+**https://youtu.be/IU83MQmcKKM**
 
 ---
 
-## ⚙️ Arquitetura e Engenharia de Software
+# 🌍 O Desafio e o Objetivo
 
-### 1. Sistema CRUD e API (Estratégia Offline-First)
+O projeto **Jornada da Terra - Nexus Orbital** foi concebido para responder a uma das questões mais importantes da atualidade:
 
-Para garantir a estabilidade máxima durante a avaliação e contornar bloqueios de firewall/redes restritas de universidades, o sistema de consumo de API foi projetado com uma **Mock API Inteligente**.
+> Como a infraestrutura espacial pode contribuir diretamente para a segurança alimentar, a sustentabilidade e a eficiência agrícola na Terra?
 
-- Mantivemos a sintaxe padrão de chamadas HTTP (para simular Axios/Fetch).
-- Interceptamos as requisições localmente utilizando o `@react-native-async-storage/async-storage`.
-- Isso garante que as operações de **Create, Read, Update e Delete** ocorram com latência simulada de rede (600ms, disparando feedbacks visuais de `ActivityIndicator`), garantindo persistência de dados em cache offline.
+## ❌ O Problema
 
-### 2. Estilização e UI/UX (Identidade HUD Gamificada)
+Produtores rurais enfrentam diariamente desafios como:
 
-A identidade visual foge do padrão corporativo básico, adotando uma interface de **Head-Up Display (HUD)** de ficção científica / sistema de comando.
+* Mudanças climáticas repentinas;
+* Estresse hídrico das plantações;
+* Degradação gradual do solo;
+* Surgimento e propagação de pragas;
+* Dificuldade em monitorar grandes áreas agrícolas.
 
-- **Cores Semânticas:** Paleta Dark/Neon (`#0B1221` de fundo, destaques em Cyan `#00E5FF` e alertas críticos em Crimson `#FF2A54`).
-- **Performance Visual:** Animações nativas (como o radar pulsante na Home) repassadas diretamente para a thread de UI (`useNativeDriver: true`), garantindo 60fps sem onerar o processador do dispositivo.
-- **Iconografia Padronizada:** Integração completa com `@expo/vector-icons` (Ionicons e MaterialCommunityIcons) para acessibilidade visual e hierarquia de informações.
-
-### 3. Padrões de Código e Clean Code
-
-O projeto segue o rigor do **TypeScript Strict Mode**, adotando princípios de Clean Code:
-
-- **Single Source of Truth:** Centralização das tipagens no arquivo `src/types/index.ts`.
-- **Componentização Lógica:** Separação estrita de responsabilidades. O roteamento fica no `App.tsx`, as chamadas de dados no diretório `/api`, e a UI no diretório `/screens`.
-- **Tratamento de Exceções:** Todos os métodos assíncronos possuem blocos `try/catch` encadeados com `Alerts` nativos do sistema operacional, evitando falhas silenciosas.
+Na maioria dos casos, a identificação desses problemas ocorre apenas quando os danos já são visíveis, tornando a resposta lenta e aumentando significativamente as perdas na produção.
 
 ---
 
-## 📖 Diário de Bordo e Metodologia Git
+## 💡 Nossa Solução
 
-Adotamos a padronização de **Conventional Commits** para manter o histórico do repositório legível, evolutivo e rastreável.
+O **Jornada da Terra** funciona como uma ponte entre a tecnologia espacial e o produtor rural.
 
-### Principais marcos superados durante o desenvolvimento
+Inspirado em sistemas de monitoramento orbital e observação terrestre, o aplicativo simula a recepção de dados provenientes de satélites como o **CBERS-4A**, convertendo informações técnicas complexas em uma interface simples e operacional.
 
-1. **Gestão de Dependências (ERESOLVE)**
-   - Resolução de conflitos profundos nas versões do React Navigation e dependências peer do Expo utilizando flags de legacy.
+Através da plataforma, o usuário pode:
 
-2. **Refatoração de Tipagem**
-   - Migração de um modelo de dados genérico para um modelo agroespacial robusto (`cultura`, `setor`, `criticidade`), blindando o app contra erros de runtime.
-
-3. **Pivô Arquitetural (Contingência)**
-   - Transição de uma infraestrutura baseada em `json-server` (que dependia de portas LAN vulneráveis a firewalls) para o motor assíncrono interno, garantindo execução impecável no Expo Go.
-
----
-
-## 🔮 Escalabilidade (Visão de Futuro)
-
-O projeto foi desenhado como um MVP (*Minimum Viable Product*) altamente escalável.
-
-### Próximos passos previstos
-
-- **Integração IoT:** Conectar o aplicativo a sensores reais de umidade no solo via Bluetooth Low Energy (BLE).
-- **APIs Governamentais:** Substituir a Mock API por requisições HTTP reais aos satélites do INPE (Instituto Nacional de Pesquisas Espaciais).
-- **Push Notifications:** Implementação de Firebase Cloud Messaging (FCM) para alertas de pragas em segundo plano, alertando o fazendeiro mesmo com a tela do celular bloqueada.
+* 🌱 Monitorar indicadores de saúde do solo;
+* 💧 Acompanhar níveis de umidade;
+* 🚨 Identificar anomalias climáticas;
+* 📍 Localizar focos de risco georreferenciados;
+* 📋 Gerenciar ocorrências através de missões táticas;
+* ⚡ Agir preventivamente antes que os problemas se agravem.
 
 ---
 
-## 🚀 Como Executar o Projeto (Guia à Prova de Falhas)
+## 🎯 O Diferencial
 
-### 1. Clone o repositório e instale as dependências
+Ao invés de utilizar planilhas ou dashboards corporativos tradicionais, o projeto adota uma experiência totalmente gamificada.
+
+O agricultor assume o papel de um **Comandante de Campo**, operando uma interface inspirada em sistemas de comando e controle (HUD - Head-Up Display), onde cada ocorrência é tratada como uma missão estratégica.
+
+Essa abordagem aumenta:
+
+* Engajamento;
+* Facilidade de uso;
+* Rapidez na tomada de decisão;
+* Interpretação visual dos dados.
+
+Nosso objetivo é demonstrar que a **Economia Espacial** pode estar presente na palma da mão do produtor rural, tornando tecnologias avançadas acessíveis e úteis para o cotidiano do campo.
+
+---
+
+# 📱 Mapeamento de Telas e Navegação
+
+A aplicação foi desenvolvida utilizando **React Navigation (Native Stack)** e possui **7 telas exclusivas**, superando os requisitos mínimos do desafio.
+
+## 🏠 Home (`HomeScreen`)
+
+Dashboard principal do sistema.
+
+**Funcionalidades:**
+
+* Status da telemetria orbital;
+* Indicadores operacionais;
+* Logs simulados em tempo real;
+* Radar animado.
+
+---
+
+## 📡 Monitoramento (`QuestsScreen`)
+
+Central de monitoramento das ocorrências.
+
+**Funcionalidades:**
+
+* Listagem de anomalias cadastradas;
+* Indicadores de criticidade;
+* Consulta geral dos registros (Read).
+
+---
+
+## ➕ Reportar Anomalia (`AddQuestScreen`)
+
+Tela responsável pelo cadastro de novas ocorrências.
+
+**Funcionalidades:**
+
+* Formulário validado;
+* Registro de novas missões;
+* Operação Create do CRUD.
+
+---
+
+## 🔎 Detalhes do Alerta (`QuestDetailScreen`)
+
+Visualização completa da ocorrência.
+
+**Funcionalidades:**
+
+* Informações detalhadas;
+* Exclusão de registros;
+* Operação Delete do CRUD.
+
+---
+
+## ✏️ Ajustar Tática (`EditQuestScreen`)
+
+Atualização dos dados cadastrados.
+
+**Funcionalidades:**
+
+* Alteração de informações;
+* Atualização de criticidade;
+* Operação Update do CRUD.
+
+---
+
+## 📊 Telemetria (`StatsScreen`)
+
+Central de indicadores agrícolas.
+
+**Funcionalidades:**
+
+* Gráficos de umidade;
+* Saúde do solo;
+* Estatísticas agrícolas.
+
+---
+
+## 🛰️ Radar Orbital (`MapScreen`)
+
+Visualização geográfica da propriedade monitorada.
+
+**Funcionalidades:**
+
+* Geolocalização da fazenda;
+* Mapeamento dos eventos;
+* Integração com mapas.
+
+---
+
+# ⚙️ Arquitetura e Engenharia de Software
+
+## 🔄 Sistema CRUD e Persistência Offline
+
+Para garantir máxima confiabilidade durante apresentações e avaliações, foi adotada uma estratégia **Offline-First**.
+
+O projeto utiliza:
+
+* `@react-native-async-storage/async-storage`
+* Persistência local dos dados
+* Simulação de requisições HTTP
+* Latência controlada de 600ms
+* Feedback visual através de `ActivityIndicator`
+
+Essa abordagem elimina dependências de rede e garante funcionamento consistente em qualquer ambiente.
+
+---
+
+## 🎨 UI/UX Gamificada
+
+A identidade visual foi inspirada em sistemas de comando espacial.
+
+### Paleta Visual
+
+| Elemento        | Cor     |
+| --------------- | ------- |
+| Fundo Principal | #0B1221 |
+| Destaque        | #00E5FF |
+| Alerta Crítico  | #FF2A54 |
+
+### Características
+
+* Interface estilo HUD futurista;
+* Feedback visual constante;
+* Ícones padronizados;
+* Animações otimizadas com `useNativeDriver`;
+* Navegação intuitiva.
+
+---
+
+## 🧹 Clean Code e Organização
+
+O projeto segue práticas modernas de desenvolvimento:
+
+### Estrutura
+
+```text
+src/
+├── api/
+├── screens/
+├── navigation/
+├── types/
+└── components/
+```
+
+### Boas Práticas
+
+* TypeScript Strict Mode;
+* Single Source of Truth;
+* Separação de responsabilidades;
+* Tratamento de exceções com `try/catch`;
+* Componentização reutilizável;
+* Tipagem centralizada.
+
+---
+
+# 📖 Diário de Bordo e Evolução do Projeto
+
+Durante o desenvolvimento, diversos desafios técnicos foram superados.
+
+## 1️⃣ Gestão de Dependências
+
+Resolução de conflitos envolvendo:
+
+* Expo;
+* React Navigation;
+* Dependências peer;
+* Problemas de ERESOLVE.
+
+---
+
+## 2️⃣ Refatoração de Tipagem
+
+Evolução do modelo de dados para um sistema especializado em monitoramento agroespacial.
+
+Novos atributos:
+
+* Cultura;
+* Setor;
+* Criticidade;
+* Localização;
+* Status operacional.
+
+---
+
+## 3️⃣ Pivô Arquitetural
+
+Inicialmente o projeto utilizava:
+
+```text
+json-server
+```
+
+Posteriormente foi realizada a migração para:
+
+```text
+AsyncStorage
+```
+
+Garantindo:
+
+* Maior estabilidade;
+* Menor dependência de rede;
+* Melhor experiência durante demonstrações.
+
+---
+
+# 🔮 Escalabilidade e Futuro
+
+O Nexus Orbital foi concebido como um MVP altamente expansível.
+
+## Próximas Evoluções
+
+### 🌱 Integração IoT
+
+* Sensores reais de solo;
+* Comunicação BLE;
+* Coleta automática de dados.
+
+### 🛰️ APIs Governamentais
+
+* Integração com bases do INPE;
+* Dados orbitais reais;
+* Monitoramento avançado.
+
+### 🔔 Push Notifications
+
+* Firebase Cloud Messaging;
+* Alertas em segundo plano;
+* Notificações críticas em tempo real.
+
+---
+
+# 🚀 Como Executar o Projeto
+
+## 1. Clonar o Repositório
 
 ```bash
-git clone [https://github.com/ChrisDeSousaFreitas/JornadaDaTerra.git]
+git clone <https://github.com/ChrisDeSousaFreitas/JornadaDaTerra.git>
 cd JornadaDaTerra
+```
+
+---
+
+## 2. Instalar Dependências
+
+```bash
 npm install
 ```
 
-### 2. Inicie o servidor Expo limpando o cache
+---
+
+## 3. Iniciar o Projeto
 
 ```bash
 npx expo start -c
 ```
 
-### 3. Execute em um dispositivo físico
+---
 
-1. Baixe o aplicativo **Expo Go** (App Store ou Google Play).
-2. Escaneie o QR Code exibido no terminal.
+## 4. Executar no Dispositivo
 
-### Observação
-
-Devido à arquitetura autossuficiente baseada em **AsyncStorage**, o aplicativo funciona perfeitamente com persistência completa dos dados, independentemente do tipo de rede utilizado (**LAN**, **Tunnel** ou **Local**), garantindo máxima confiabilidade durante demonstrações e avaliações.
+1. Instale o aplicativo **Expo Go**.
+2. Escaneie o QR Code gerado.
+3. Aguarde o carregamento do projeto.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## ✅ Observação
 
-- React Native
-- TypeScript
-- Expo
-- React Navigation
-- AsyncStorage
-- React Native Maps
-- React Native Chart Kit
-- Expo Vector Icons
+Devido à arquitetura baseada em **AsyncStorage**, o aplicativo funciona com persistência completa de dados independentemente do modo de conexão utilizado:
+
+* LAN
+* Tunnel
+* Local
+
+Isso garante demonstrações estáveis e previsíveis em qualquer ambiente.
 
 ---
 
-## 📄 Licença
+# 🛠️ Tecnologias Utilizadas
 
-Projeto acadêmico desenvolvido para a **Global Solution 2026/1**, com foco em aplicações de tecnologia espacial voltadas para desafios do agronegócio e monitoramento climático.
+* React Native
+* TypeScript
+* Expo
+* React Navigation
+* AsyncStorage
+* React Native Maps
+* React Native Chart Kit
+* Expo Vector Icons
+
+---
+
+# 📄 Licença
+
+Projeto acadêmico desenvolvido para a **Global Solution 2026/1**, explorando o potencial da tecnologia espacial aplicada ao agronegócio, monitoramento climático e tomada de decisão baseada em dados.
