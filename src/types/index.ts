@@ -1,12 +1,12 @@
-// src/types/index.ts
-
+// Contrato de dados rigoroso
 export interface Ocorrencia {
   id: string;
-  cultura: 'Milho' | 'Soja' | 'Trigo' | 'Outra'; // Adicionada a propriedade com tipos definidos
+  cultura: string;
   setor: string;
-  criticidade: 'Baixa' | 'Média' | 'Alta';
+  criticidade: string;
 }
 
+// Mapeamento exato das rotas de navegação
 export type RootStackParamList = {
   Home: undefined;
   Quests: undefined;
