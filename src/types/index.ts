@@ -2,13 +2,13 @@ export type RootStackParamList = {
   Home: undefined;
   Quests: undefined;
   AddQuest: undefined;
-  QuestDetail: { quest: Quest };
-  EditQuest: { quest: Quest };
+  QuestDetail: { quest: Ocorrencia };
+  EditQuest: { quest: Ocorrencia };
 };
 
-export interface Quest {
+export interface Ocorrencia {
   id: string;
-  title: string;
-  sector: string;
-  rank: string;
+  cultura: string;
+  setor: string;
+  criticidade: 'Baixa' | 'Média' | 'Alta';
 }
