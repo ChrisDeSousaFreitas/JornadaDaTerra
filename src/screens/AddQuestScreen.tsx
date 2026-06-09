@@ -18,6 +18,8 @@ export default function AddQuestScreen({ navigation }: Props) {
       return;
     }
 
+      Alert.alert("Alerta de Satélite", "Anomalia detectada com sucesso na Fazenda Boa Vista!");
+
     try {
       await api.post('/ocorrencias', { 
         cultura, 

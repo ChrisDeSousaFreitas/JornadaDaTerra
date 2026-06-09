@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://SEU_IP_AQUI:3000', // ou o link do ngrok
+  baseURL: 'http://192.168.15.4:3000', // entre as duas barras (//) e o número da porta (3000) deve ser o IP do seu computador
 });
 
 // CERTIFICA-TE QUE ESTÁ ASSIM:
